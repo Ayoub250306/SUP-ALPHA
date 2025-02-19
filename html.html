@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUP'RH</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>SUP'RH</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be added here -->
+            <div id="chatBody"></div>
+        </div>
+
+        <div class="chat-input-container">
+            <input 
+                type="text" 
+                class="chat-input" 
+                id="messageInput"
+                placeholder="Type your message..."
+                autocomplete="off"
+                onkeypress="checkForEnter(event)"
+            >
+            <button 
+                class="send-button" 
+                id="sendButton"
+                title="Send message"
+                aria-label="Send message"
+                onclick="sendMessage()"
+>
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+</button>
+
+            </button>
+            <button 
+                class="menu-btn" 
+                id="menuBtn"
+                title="Menu options"
+                aria-label="Menu options"
+                onclick="toggleDropdown()"
+            >
+            <div class="menu-icon">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            </button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <button class="menu-item" onclick="toggleSubDropdown('preoccupationsDropdown')">Préoccupations</button>
+                <div class="sub-menu-dropdown" id="preoccupationsDropdown">
+                    <button class="menu-item" onclick="selectOption('Développement personnel')">Développement personnel</button>
+                    <button class="menu-item" onclick="selectOption('Partenariats internationaux')">Partenariats internationaux</button>
+                    <button class="menu-item" onclick="selectOption('Insertion professionnelle')">Insertion professionnelle</button>
+                    <button class="menu-item" onclick="selectOption('Vie étudiante')">Vie étudiante</button>
+                    <button class="menu-item" onclick="selectOption('Programmes académiques')">Programmes académiques</button>
+                </div>
+                <button class="menu-item" onclick="window.location.href='https://forms.office.com/Pages/ResponsePage.aspx?id=GgqPD731S0qRgEyCuumC1ptn9F1CQ01JhAQiMVNNthBUQTJOQUI0OThHQlRXNlJSS0RPSlo2Q0g4RC4u'">Inscription</button>
+                <button class="menu-item" onclick="selectOption('Offre de stage')">Offre de stage</button>
+                <button id="aiButton" class="menu-item">IA</button>
+                  <input type="text" id="userInputAI" style="display:none;" placeholder="Posez votre question..." />
+
+                  <button class="menu-item" onclick="window.location.href='https://forms.office.com/Pages/ResponsePage.aspx?id=GgqPD731S0qRgEyCuumC1ptn9F1CQ01JhAQiMVNNthBUMUxRQlhJSFdOWEpBWUxQS0hINVVCSFRLQi4u'">Évaluation de nos services</button>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="evaluationForm" style="display: none;">
+        <h2>Formulaire d'évaluation</h2>
+        <form id="form">
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <button type="submit">Soumettre</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="java.js"></script>
+</body>
+</html>

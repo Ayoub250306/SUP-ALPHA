@@ -1,0 +1,296 @@
+:root {
+    --primary-color: #007BFF;  /* Couleur primaire (bleu) */
+    --background-color: #F3F4F6;  /* Couleur de fond principale */
+    --text-color: #333;  /* Couleur du texte principal */
+    --darker-color: #0056b3;  /* Bleu plus foncé */
+    --darkest-color: #004494;  /* Bleu le plus foncé */
+    --menu-btn-bg: rgba(0, 0, 0, 0.1); /* Couleur de fond du bouton de menu */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Permet de gérer la mise en page de manière consistante */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police par défaut */
+    background-image:URL();  /* Image de fond */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100vh;  /* Hauteur totale de la fenêtre */
+    display: flex;
+    justify-content: center;  /* Centre le contenu horizontalement */
+    align-items: center;  /* Centre le contenu verticalement */
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 400px;  /* Largeur maximale de la boîte de chat */
+    height: 100vh;
+    background-color: white;
+    background-image: url('');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;  /* Organise les éléments en colonne */
+    position: relative;
+    border-radius: 20px;  /* Coins arrondis */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);  /* Ombre portée pour un effet de profondeur */
+}
+
+.chat-header {
+    background-color: var(--primary-color);  /* Couleur de fond de l'en-tête */
+    padding: 1rem;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;  /* Espace entre les éléments */
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-left i {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.menu-btn {
+    background: var(--menu-btn-bg);  /* Fond du bouton de menu */
+    border: none;
+    color: var(--darkest-color);  /* Couleur du texte */
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;  /* Forme ronde */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;  /* Ajuste la hauteur des lignes */
+    width: 10px;   /* Largeur des lignes */
+}
+
+.dot {
+    background-color: var(--darkest-color);  /* Couleur des points */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;  /* Forme ronde */
+}
+
+.menu-dropdown {
+    position: absolute;
+    bottom: 70px;  /* Positionnement du menu */
+    right: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.menu-dropdown.show {
+    display: block;  /* Affiche le menu quand il a la classe 'show' */
+}
+
+.sub-menu-dropdown {
+    display: none;
+    padding-left: 10px;
+    position: absolute;
+    left: 100%;
+    top: -10px;
+    z-index: 2000;
+    transform: translate(10px, 10px);
+}
+
+.sub-menu-dropdown.show {
+    display: block;  /* Affiche le sous-menu quand il a la classe 'show' */
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.menu-item:hover {
+    background-color: #F3F4F6;  /* Changement de couleur au survol */
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;  /* Permet le défilement vertical */
+    padding: 1rem;
+    background-color: #F9FAFB;
+}
+
+.message {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.message.user {
+    background-color: #007bff;  /* Couleur de fond pour les messages de l'utilisateur */
+    color: white;
+    margin-left: auto;
+}
+
+.message.bot {
+    background-color: #f1f1f1;  /* Couleur de fond pour les messages du bot */
+    margin-right: auto;
+}
+
+.message-timestamp {
+    font-size: 11px;
+    color: #999;
+    margin-top: 4px;
+    float: right;
+}
+
+.chat-input-container {
+    padding: 1rem;
+    background-color: white;
+    border-top: 1px solid #E5E7EB;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    position: relative;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 1.5rem;
+    outline: none;
+}
+
+.chat-input:focus {
+    border-color: var(--primary-color);  /* Change la couleur de la bordure au focus */
+}
+
+.send-button {
+    width: 70px;
+    height: 70px;
+    background-color: #fbf7f7; /* Couleur métallique */
+    border-radius: 15px;
+    border: 5px solid #f5efef;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 6px 12px rgb(245, 243, 243); /* Ombre pour donner du volume */
+}
+
+.send-button i {
+    font-size: 30px;
+    color: white;
+}
+
+.send-button::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(45deg, rgb(252, 248, 248), #ccc);
+    z-index: -1;
+}
+
+.send-button::after {
+    content: "🤖"; /* Emoji robot comme ajout pour un effet de tête robot */
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    color: #fff;
+}
+
+.send-button:hover {
+    background-color: #555;  /* Changement de couleur au survol */
+    transform: scale(1.1);  /* Légère augmentation de la taille au survol */
+}
+
+.send-button:active {
+    transform: scale(0.95); /* Réduction au clic */
+}
+
+.internship-listings {
+    width: 100%;
+}
+
+.internship-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.internship-item h4 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.internship-item p {
+    margin: 5px 0;
+    color: #34495e;
+}
+
+.info-button {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.info-button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+    color: white;
+}
+
+.message.bot .internship-listings {
+    background: none;
+    box-shadow: none;
+}
